@@ -1,0 +1,24 @@
+.tableContainer {
+  background-color: white;
+  margin-top: 20px;
+  border: 1px solid rgb(214, 217, 219);
+  border-radius: 3px;
+}
+
+.tableContainer table {
+  width: 100%;
+}
+
+.tableContainer th,
+.tableContainer td {
+  border-bottom: 1px solid rgb(214, 217, 219);
+  padding: 15px 15px;
+}
+
+.tableContainer th {
+  font-weight: 300;
+}
+
+.tableContainer thead tr th:nth-child(1) {
+  font-weight: bold;
+}

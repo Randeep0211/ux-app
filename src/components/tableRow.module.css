@@ -1,0 +1,19 @@
+.done {
+  color: green;
+  background-color: rgba(0, 255, 0, 0.3);
+}
+
+.fail {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.3);
+}
+.check {
+  color: goldenrod;
+  background-color: rgba(255, 208, 0, 0.3);
+}
+
+.button {
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+}

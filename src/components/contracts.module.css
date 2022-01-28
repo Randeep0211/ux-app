@@ -1,0 +1,18 @@
+.contractsContainer {
+  background-color: white;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  align-items: flex-start;
+  margin-inline: 140px;
+}
+
+.h1 {
+  font-weight: 500;
+}
+
+.h3 {
+  margin-top: 2px;
+  font-weight: 200;
+}
