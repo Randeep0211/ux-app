@@ -3,6 +3,7 @@ import './App.css';
 import Contracts from './components/contracts';
 import Search from './components/search';
 import Table from './components/table';
+import { rowData } from './data.js';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
       />
       <div className="container">
         <Search placeholder="Search" />
-        <Table />
+        <Table
+        // rowData={rowData}
+        />
       </div>
     </div>
   );

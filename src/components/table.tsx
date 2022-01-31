@@ -1,60 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './table.module.css';
 import TableRow from './tableRow';
+// import { rowData } from '../data.js';
 
-const Table = () => {
+const url = 'https://jsonplaceholder.typicode.com/posts';
+
+interface RowDataProps {
+  // rowData: {
+  //   status: string;
+  //   country: string;
+  //   insured: string;
+  //   object: string;
+  //   product: string;
+  // }[];
+}
+
+const Table: React.FC<RowDataProps> = ({}) => {
   return (
     <table className={styles.tableContainer}>
       <thead>
         <tr>
-          <th>STATUS</th>
+          {/* <th>STATUS</th>
           <th>INSURED</th>
           <th>OBJECT</th>
           <th>COUNTRY</th>
-          <th>PRODUCT</th>
+          <th>PRODUCT</th> */}
+
+          <th>userId</th>
+          <th>id</th>
+          <th>title</th>
+          <th>body</th>
         </tr>
       </thead>
 
       <tbody>
-        <TableRow
-          status="DONE"
-          insured="Kate Winson"
-          object="Civilian"
-          country="Ukraine"
-          product="Osago"
-        />
+        {/* {rowData.map((el, index) => (
+          <TableRow
+            key={index}
+            status={el.status}
+            country={el.country}
+            insured={el.insured}
+            object={el.object}
+            product={el.product}
+          />
+        ))} */}
 
-        <TableRow
-          status="FAIL"
-          insured="Duglas"
-          object="Transport"
-          country="Ukraine"
-          product="Casco"
-        />
-
-        <TableRow
-          status="DONE"
-          insured="Robert"
-          object="Personal"
-          country="Ukraine"
-          product="Life insur"
-        />
-
-        <TableRow
-          status="CHECK"
-          insured="Antony Blues"
-          object="Transport"
-          country="Maldives"
-          product="Casco"
-        />
-
-        <TableRow
-          status="FAIL"
-          insured="Rahul"
-          object="Personal"
-          country="Maldives"
-          product="Casco"
-        />
+        <TableRow />
       </tbody>
     </table>
   );

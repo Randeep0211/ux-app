@@ -1,42 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './tableRow.module.css';
 import classNames from 'classnames';
 
+const url = 'https://jsonplaceholder.typicode.com/posts';
 interface DataProps {
-  status: string;
-  insured: string;
-  object: string;
-  country: string;
-  product: string;
+  // status: string;
+  // insured: string;
+  // object: string;
+  // country: string;
+  // product: string;
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
 }
 
-const TableRow: React.FC<DataProps> = ({
-  status,
-  insured,
-  object,
-  country,
-  product,
-}) => {
-  return (
-    <tr>
-      <td>
-        <button
-          className={classNames([
-            styles.button,
-            status === 'DONE' && styles.done,
-            status === 'FAIL' && styles.fail,
-            status === 'CHECK' && styles.check,
-          ])}
-        >
-          {status}
-        </button>
-      </td>
+const TableRow = (
+  {
+    // status,
+    // insured,
+    // object,
+    // country,
+    // product,
+  }
+) => {
+  const [data, setData] = React.useState<DataProps[]>([]);
 
-      <td>{insured}</td>
-      <td>{object}</td>
-      <td>{country}</td>
-      <td>{product}</td>
-    </tr>
+  const getData = async () => {
+    try {
+      const data = await axios.get(url);
+      setData(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+  return (
+    // <tr>
+    //   <td>
+    //     <button
+    //       className={classNames([
+    //         styles.button,
+    //         status === 'DONE' && styles.done,
+    //         status === 'FAIL' && styles.fail,
+    //         status === 'CHECK' && styles.check,
+    //       ])}
+    //     >
+    //       {status}
+    //     </button>
+    //   </td>
+
+    //   <td>{insured}</td>
+    //   <td>{object}</td>
+    //   <td>{country}</td>
+    //   <td>{product}</td>
+    // </tr>
+
+    <div>
+      {data.map((el, index) => {
+        return (
+          <tr>
+            <td>{el.userId}</td>
+            <td>{el.id}</td>
+            <td>{el.title}</td>
+            <td>{el.body}</td>
+          </tr>
+        );
+      })}
+    </div>
   );
 };
 

@@ -3,6 +3,8 @@
   margin-top: 20px;
   border: 1px solid rgb(214, 217, 219);
   border-radius: 3px;
+  display: flex;
+  flex-direction: column;
 }
 
 .tableContainer table {
@@ -12,7 +14,7 @@
 .tableContainer th,
 .tableContainer td {
   border-bottom: 1px solid rgb(214, 217, 219);
-  padding: 15px 15px;
+  padding: 100px 100px;
 }
 
 .tableContainer th {
