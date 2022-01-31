@@ -16,29 +16,17 @@ interface DataProps {
   body: string;
 }
 
-const TableRow = (
-  {
-    // status,
-    // insured,
-    // object,
-    // country,
-    // product,
-  }
-) => {
-  const [data, setData] = React.useState<DataProps[]>([]);
-
-  const getData = async () => {
-    try {
-      const data = await axios.get(url);
-      setData(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+const TableRow: React.FC<DataProps> = ({
+  // status,
+  // insured,
+  // object,
+  // country,
+  // product,
+  userId,
+  id,
+  title,
+  body,
+}) => {
   return (
     // <tr>
     //   <td>
@@ -60,18 +48,12 @@ const TableRow = (
     //   <td>{product}</td>
     // </tr>
 
-    <div>
-      {data.map((el, index) => {
-        return (
-          <tr>
-            <td>{el.userId}</td>
-            <td>{el.id}</td>
-            <td>{el.title}</td>
-            <td>{el.body}</td>
-          </tr>
-        );
-      })}
-    </div>
+    <tr>
+      <td>{userId}</td>
+      <td>{id}</td>
+      <td>{title}</td>
+      <td>{body}</td>
+    </tr>
   );
 };
 

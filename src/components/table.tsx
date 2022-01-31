@@ -3,10 +3,11 @@ import axios from 'axios';
 import styles from './table.module.css';
 import TableRow from './tableRow';
 // import { rowData } from '../data.js';
+import Loading from './loading';
 
 const url = 'https://jsonplaceholder.typicode.com/posts';
 
-interface RowDataProps {
+interface DataProps {
   // rowData: {
   //   status: string;
   //   country: string;
@@ -14,9 +15,40 @@ interface RowDataProps {
   //   object: string;
   //   product: string;
   // }[];
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+  JSON: JSON;
 }
 
-const Table: React.FC<RowDataProps> = ({}) => {
+const Table = ({}) => {
+  const [data, setData] = React.useState<DataProps[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const getData = async () => {
+    setLoading(true);
+    try {
+      const data = await axios.get(url, {});
+      setLoading(false);
+      setData(data.data);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (loading) {
+    return (
+      <main>
+        <Loading />
+      </main>
+    );
+  }
   return (
     <table className={styles.tableContainer}>
       <thead>
@@ -46,7 +78,15 @@ const Table: React.FC<RowDataProps> = ({}) => {
           />
         ))} */}
 
-        <TableRow />
+        {data.map((el, index) => (
+          <TableRow
+            key={index}
+            userId={el.userId}
+            id={el.id}
+            title={el.title}
+            body={el.body}
+          />
+        ))}
       </tbody>
     </table>
   );
