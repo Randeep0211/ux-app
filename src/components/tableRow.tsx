@@ -3,7 +3,6 @@ import axios from 'axios';
 import styles from './tableRow.module.css';
 import classNames from 'classnames';
 
-const url = 'https://jsonplaceholder.typicode.com/posts';
 interface DataProps {
   // status: string;
   // insured: string;

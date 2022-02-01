@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './table.module.css';
 import TableRow from './tableRow';
-// import { rowData } from '../data.js';
+import { rowData } from '../data.js';
 import Loading from './loading';
 
 const url = 'https://jsonplaceholder.typicode.com/posts';
@@ -19,7 +19,6 @@ interface DataProps {
   id: number;
   title: string;
   body: string;
-  JSON: JSON;
 }
 
 const Table = ({}) => {
@@ -29,7 +28,7 @@ const Table = ({}) => {
   const getData = async () => {
     setLoading(true);
     try {
-      const data = await axios.get(url, {});
+      const data = await axios.get(url);
       setLoading(false);
       setData(data.data);
     } catch (error) {
