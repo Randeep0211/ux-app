@@ -41,7 +41,7 @@ body {
   width: 100%;
 }
 
-.container {
+/* .container {
   background-color: whitesmoke;
   margin-top: 20px;
   display: flex;
@@ -50,4 +50,3 @@ body {
   padding-bottom: 40px;
 
   /* Add width instead of above fix */
-}

@@ -1,30 +1,22 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import './App.css';
-import Contracts from './components/contracts';
-import Search from './components/search';
-import Table from './components/table';
-import Table1 from './components/table1';
-import { rowData } from './data.js';
-import { Router, Route, Routes } from 'react-router-dom';
+import ContractList from './pages/contract-list';
+// import Table1 from './pages/contract-list/table1';
+import ContractDetail from './pages/contract-detail';
+// import { rowData } from './data.js';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <Contracts
-        contracts="My contracts"
-        status="Current Status of contracts"
-      />
       <div className="container">
-        <Search placeholder="Search" />
-
         {/* <Table
     //     // rowData={rowData}
     //     /> */}
         <Routes>
-          <Route path="/:id" element={<Table1 />}></Route>
-          <Route path="/" element={<Table />}></Route>
+          <Route path="/" element={<ContractList />}></Route>
+          <Route path="/:id" element={<ContractDetail />}></Route>
         </Routes>
-        {/* <Table1 /> */}
       </div>
     </div>
   );

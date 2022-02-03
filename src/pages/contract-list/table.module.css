@@ -22,3 +22,14 @@
 .tableContainer thead tr th:nth-child(1) {
   font-weight: bold;
 }
+
+.container {
+  background-color: whitesmoke;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-inline: 140px;
+  padding-bottom: 40px;
+
+  /* Add width instead of above fix */
+}

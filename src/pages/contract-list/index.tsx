@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './table.module.css';
-import TableRow from './tableRow';
-import { rowData } from '../data.js';
-import Loading from './loading';
+import TableRow from '../../components/table-row';
+// import { rowData } from '../../data.js';
+import Loading from '../../components/loading';
+import { Layout } from '../../layout';
 
 const url = 'https://jsonplaceholder.typicode.com/posts';
 
@@ -21,7 +22,7 @@ interface DataProps {
   body: string;
 }
 
-const Table = ({}) => {
+const ContractList = () => {
   const [data, setData] = React.useState<DataProps[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -49,24 +50,25 @@ const Table = ({}) => {
     );
   }
   return (
-    <table className={styles.tableContainer}>
-      <thead>
-        <tr>
-          {/* <th>STATUS</th>
+    <Layout>
+      <table className={styles.tableContainer}>
+        <thead>
+          <tr>
+            {/* <th>STATUS</th>
           <th>INSURED</th>
           <th>OBJECT</th>
           <th>COUNTRY</th>
           <th>PRODUCT</th> */}
 
-          <th>userId</th>
-          <th>id</th>
-          <th>title</th>
-          <th>body</th>
-        </tr>
-      </thead>
+            <th>userId</th>
+            <th>id</th>
+            <th>title</th>
+            <th>body</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        {/* {rowData.map((el, index) => (
+        <tbody>
+          {/* {rowData.map((el, index) => (
           <TableRow
             key={index}
             status={el.status}
@@ -77,18 +79,19 @@ const Table = ({}) => {
           />
         ))} */}
 
-        {data.map((el, index) => (
-          <TableRow
-            key={index}
-            userId={el.userId}
-            id={el.id}
-            title={el.title}
-            body={el.body}
-          />
-        ))}
-      </tbody>
-    </table>
+          {data.map((el, index) => (
+            <TableRow
+              key={index}
+              userId={el.userId}
+              id={el.id}
+              title={el.title}
+              body={el.body}
+            />
+          ))}
+        </tbody>
+      </table>
+    </Layout>
   );
 };
 
-export default Table;
+export default ContractList;

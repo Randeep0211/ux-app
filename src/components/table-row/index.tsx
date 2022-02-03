@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import styles from './tableRow.module.css';
-import classNames from 'classnames';
+import React from 'react';
+// import axios from 'axios';
+// import styles from './tableRow.module.css';
+// import classNames from 'classnames';
 
 interface DataProps {
   // status: string;

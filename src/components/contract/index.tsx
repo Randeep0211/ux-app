@@ -6,7 +6,7 @@ interface ContractProps {
   status: string;
 }
 
-const Contracts: React.FC<ContractProps> = ({ contracts, status }) => {
+const ContractsHeading: React.FC<ContractProps> = ({ contracts, status }) => {
   return (
     <div className={styles.contractsContainer}>
       <h1 className={styles.h1}>{contracts}</h1>
@@ -15,4 +15,4 @@ const Contracts: React.FC<ContractProps> = ({ contracts, status }) => {
   );
 };
 
-export default Contracts;
+export default ContractsHeading;

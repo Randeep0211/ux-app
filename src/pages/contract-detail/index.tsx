@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styles from './table.module.css';
-import TableRow from './tableRow';
-import Loading from './loading';
+import styles from './card.module.css';
+
+import Loading from '../../components/loading/index';
 import { useParams } from 'react-router-dom';
 
 interface DataProps {
@@ -12,7 +12,7 @@ interface DataProps {
   body: string;
 }
 
-const Table1 = () => {
+function ContractDetail() {
   const [data, setData] = React.useState<DataProps>();
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -27,45 +27,31 @@ const Table1 = () => {
       setLoading(false);
       setData(data.data);
     } catch (error) {
-      setLoading(false);
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     getData();
   }, []);
-
-  if (loading) {
-    return (
-      <main>
-        <Loading />
-      </main>
-    );
-  }
   return (
-    <table className={styles.tableContainer}>
-      <thead>
-        <tr>
-          <th>userId</th>
-          <th>id</th>
-          <th>title</th>
-          <th>body</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {data && (
-          <TableRow
-            userId={data.userId}
-            id={data.id}
-            title={data.title}
-            body={data.body}
-          />
-        )}
-      </tbody>
-    </table>
+    <>
+      {!!loading || !data ? (
+        <div>
+          <Loading />
+        </div>
+      ) : (
+        <div className={styles.cardContainer}>
+          <div> UserId: {data.userId}</div>
+          <div>Id: {data.id}</div>
+          <div>Tittle: {data.title}</div>
+          <div>Body: {data.body}</div>
+        </div>
+      )}
+    </>
   );
-};
+}
 
-export default Table1;
+export default ContractDetail;
